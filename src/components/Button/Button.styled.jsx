@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const LoadButton = styled.button`
   padding: 8px 16px;

@@ -1,4 +1,4 @@
-import { React, Component } from 'react';
+import  { React, Component } from 'react';
 import { fetchPictures } from 'services/gallery-api';
 
 import { Searchbar } from './Searchbar/Searchbar';
