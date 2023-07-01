@@ -1,15 +1,16 @@
-import { Blocks } from 'react-loader-spinner';
+import { Vortex } from 'react-loader-spinner';
 
 export const Loader = () => {
   return (
     <div style={{ textAlign: 'center' }}>
-      <Blocks
-      visible={true}
-      height="80"
-      width="80"
-      ariaLabel="blocks-loading"
-      wrapperStyle={{}}
-      wrapperClass="blocks-wrapper"
+      <Vortex
+        visible={true}
+        height="100"
+        width="100"
+        ariaLabel="vortex-loading"
+        wrapperStyle={{}}
+        wrapperClass="vortex-wrapper"
+        colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
       />
     </div>
   );
