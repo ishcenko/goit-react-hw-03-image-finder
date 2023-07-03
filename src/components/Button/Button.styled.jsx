@@ -1,19 +1,19 @@
 import styled from 'styled-components';
 
 export const LoadButton = styled.button`
-  padding: 8px 16px;
-  border-radius: 5px;
+  padding: 10px 24px;
+  border-radius: 8px;
   background: linear-gradient(
     40deg,
     #1e2400 0%,
-    rgba(57, 158, 195, 0.69) 12%,
-    #6361dd 19%,
+    rgba(112, 207, 241, 0.69) 12%,
+    #9796d2 19%,
     #9c9bd2 29%,
-    #59598a 35%,
-    #2866ec 49%,
-    #408af8 54%,
-    rgba(5, 96, 179, 1) 78%,
-    rgba(0, 212, 255, 1) 100%
+    #bbbbf1 35%,
+    #9eb5e9 49%,
+    #38edc9 54%,
+    #a1c9ef 78%,
+    #89e2f4 100%
   );
   transition: all 1000ms cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
@@ -48,6 +48,6 @@ export const LoadButton = styled.button`
       rgba(0, 212, 255, 1) 100%
     );
     transform: scale(1.15);
-    padding: 10px;
+    padding: 15px;
   }
 `;
