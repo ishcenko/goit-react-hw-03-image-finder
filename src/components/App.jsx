@@ -15,10 +15,11 @@ export class App extends Component {
     pictures: [],
     status: 'idle',
     showModal: false,
+    notification: '',
     largeImageUrl: '',
     page: 1,
     query: '',
-    loadMore: null,
+    totalImage: 0,
   };
 
   getLargeImgUrl = imgUrl => {
@@ -33,7 +34,7 @@ export class App extends Component {
   };
 
   searchResult = value => {
-    this.setState({ query: value, page: 1, pictures: [], loadMore: null });
+    this.setState({ query: value, page: 1, pictures: [], totalImage: 0 });
   };
 
   handleLoadMore = () => {
@@ -52,19 +53,41 @@ export class App extends Component {
       this.setState({ status: 'loading' });
 
       fetchPictures(query, page)
-        .then(e =>
+        .then(e => {
+          if (!e.totalHits) {
+            this.setState({
+              status: 'rejected',
+              notification: 'No images!',
+            });
+            return;
+          }
           this.setState(prevState => ({
             pictures: [...prevState.pictures, ...e.hits],
-            status: 'idle',
-            loadMore: 12 - e.hits.length,
-          }))
-        )
-        .catch(error => console.log(error));
+            status: 'resolved',
+            totalImage: e.totalHits,
+          }));
+        })
+        .catch(error => {
+          this.setState({
+            status: 'rejected',
+            notification: 'Something went wrong',
+          });
+        });
     }
   }
 
   render() {
-    const { pictures, status, showModal, largeImageUrl, loadMore } = this.state;
+    const {
+      pictures,
+      status,
+      showModal,
+      largeImageUrl,
+      totalImage,
+      notification,
+    } = this.state;
+
+    const showButton = status === 'resolved' && totalImage !== pictures.length;
+
     return (
       <Wrapper>
         <GlobalStyle />
@@ -74,7 +97,8 @@ export class App extends Component {
         )}
         <ImageGallery pictures={pictures} onClick={this.getLargeImgUrl} />
         {status === 'loading' && <Loader />}
-        {loadMore === 0 && <Button onClick={this.handleLoadMore} />}
+        {status === 'rejected' && <p>{notification}</p>}
+        {showButton && <Button onClick={this.handleLoadMore} />}
       </Wrapper>
     );
   }

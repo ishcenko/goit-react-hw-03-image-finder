@@ -25,6 +25,13 @@ img {
   max-width: 100%;
   height: auto;
 }
+p{
+  color: red;
+  font-size: 26px;
+  display: block;
+  text-align: center;
+  
+}
 `;
 
 export default GlobalStyle;

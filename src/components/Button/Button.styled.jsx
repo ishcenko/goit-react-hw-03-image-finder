@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-
+export const Not = styled.p`
+  color: blue;
+`;
 export const LoadButton = styled.button`
   padding: 10px 24px;
   border-radius: 8px;
